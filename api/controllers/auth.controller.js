@@ -48,7 +48,7 @@ export const signin=async(req,res,next)=>{
             }
             
             //for authenticate user check jwt token verification
-            const token=jwt.sign({id:validuser._id},process.env.JWT_SECRET);
+            const token=jwt.sign({id:validuser._id,user:validuser.username},process.env.JWT_SECRET);
 
             const {password:pass,...rest}=validuser._doc;
 

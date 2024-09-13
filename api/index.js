@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from "dotenv";
 import userRouter from "./routes/user.route.js";
 import authRouter from "./routes/auth.route.js";
+import cookieParser from 'cookie-parser';
 
 const app=express();
 // to cofig the env file (we use env file variables file by using the dotenv package )
@@ -19,6 +20,7 @@ mongoose.connect(process.env.MONGODB_CONNECTION_STRING)
 
 //means we allows to send data in the json format from our backend(backend ke post request me apn input fied/form me data json format me bj kar skate hai) aur accwpt kar sjte hai
 app.use(express.json());
+app.use(cookieParser());
 
 app.use('/api/user',userRouter);
 app.use('/api/auth',authRouter);
